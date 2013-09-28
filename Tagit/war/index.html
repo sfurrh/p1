@@ -1,0 +1,55 @@
+<html>
+	<head>
+	<script>
+	function wrapData(f){
+		var lat = f.lat;
+		var data = "";
+		if(lat.length){
+			for(var i=0;i<lat.length;i++){
+				var l=lat[i].value;
+				var lon = f.lon[i].value;
+				var tag = f.tag[i].value;
+				var zparm = wrapTag(l,lon,tag);
+				data+=zparm;
+			}
+		}else{
+			lat = lat.value;
+			var lon = f.lon.value;
+			var tag = f.tag.value;
+			var zparm = wrapTag(lat,lon,tag);
+			data=zparm;
+		}
+		f.data.value=data;
+	}
+	function wrapTag(lat,lon,tag){
+		var out = "";
+		out="lat."+lat.length+":"+lat;
+		out+="lon."+lon.length+":"+lon;
+		out+="tag."+tag.length+":"+tag;
+		return "tag."+out.length+":"+out;
+	}
+	</script>
+	</head>
+	<body>
+	<form method="post" action="tagit" onsubmit="wrapData(this)">
+		<table>
+			<tr>
+				<th>lat</th>
+				<th>lon</th>
+				<th>tag</th>
+			</tr>
+			<tr>
+				<td><input type="text" name="lat" value="1231.2332323"/></td>
+				<td><input type="text" name="lon" value="123.2342342"/></td>
+				<td><input type="text" name="tag" value="tag 1"/></td>
+			</tr>
+			<tr>
+				<td colspan="3" align="center"><input type="submit"/></td>
+			</tr>
+			<tr>
+				<td colspan="3"><textarea name="data"></textarea></td>
+			</tr>
+		</table>
+	</form>
+	</body>
+</html>

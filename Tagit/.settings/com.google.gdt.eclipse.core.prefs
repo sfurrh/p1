@@ -1,0 +1,4 @@
+eclipse.preferences.version=1
+jarsExcludedFromWebInfLib=/Users/sfurrh/eclipse/workspace/Tagit/lib/mysql-connector-java-5.1.21-bin.jar
+warSrcDir=war
+warSrcDirIsOutput=true
